@@ -20,7 +20,7 @@ active_tokens = {}
 async def register(user: UserRegister, session: SessionDep):
     existing = session.exec(select(User).where(User.username == user.username)).first()
     if existing:
-        raise HTTPException(status_code=400, detail="Username already exists")
+        raise HTTPException(status_code=400, detail="Username already exists in the database")
     
     new_user = User(username=user.username, password=user.password)
     session.add(new_user)
