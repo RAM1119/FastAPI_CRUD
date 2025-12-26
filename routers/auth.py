@@ -15,6 +15,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/token")
 active_tokens = {}
 
 # API 1: Register
+#This is the update to check git
 @router.post('/register')
 async def register(user: UserRegister, session: SessionDep):
     existing = session.exec(select(User).where(User.username == user.username)).first()
